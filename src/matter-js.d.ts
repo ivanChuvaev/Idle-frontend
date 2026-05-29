@@ -51,10 +51,19 @@ declare module 'matter-js' {
     const Bodies: {
       rectangle: (x: number, y: number, width: number, height: number, options?: any) => Body;
       circle: (x: number, y: number, radius: number, options?: any) => Body;
+      polygon: (
+        x: number,
+        y: number,
+        sides: number,
+        radius: number,
+        options?: any
+      ) => Body;
     };
 
     const Body: {
       applyForce: (body: Body, position: any, force: any) => void;
+      setPosition: (body: Body, position: { x: number; y: number }) => void;
+      setVertices: (body: Body, vertices: { x: number; y: number }[]) => void;
     };
 
     const Render: {
