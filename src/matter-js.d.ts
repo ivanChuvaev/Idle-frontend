@@ -1,81 +1,83 @@
 declare module 'matter-js' {
-  export interface Engine {
-    gravity: {
-      x: number;
-      y: number;
+  namespace Matter {
+    interface Engine {
+      gravity: {
+        x: number;
+        y: number;
+      };
+      world: World;
+    }
+
+    interface World {
+      bodies: Body[];
+      [key: string]: any;
+    }
+
+    interface Body {
+      position: {
+        x: number;
+        y: number;
+      };
+      isStatic: boolean;
+      label?: string;
+      [key: string]: any;
+    }
+
+    interface RenderOptions {
+      width?: number;
+      height?: number;
+      wireframes?: boolean;
+      background?: string;
+      [key: string]: any;
+    }
+
+    interface Render {
+      [key: string]: any;
+    }
+
+    interface Runner {
+      [key: string]: any;
+    }
+
+    const Engine: {
+      create: () => Engine;
+      clear: (engine: Engine) => void;
     };
-    world: World;
-  }
 
-  export interface World {
-    bodies: Body[];
-    [key: string]: any;
-  }
-
-  export interface Body {
-    position: {
-      x: number;
-      y: number;
+    const World: {
+      add: (world: World, bodies: Body | Body[]) => void;
     };
-    isStatic: boolean;
-    label?: string;
-    [key: string]: any;
+
+    const Bodies: {
+      rectangle: (x: number, y: number, width: number, height: number, options?: any) => Body;
+      circle: (x: number, y: number, radius: number, options?: any) => Body;
+    };
+
+    const Body: {
+      applyForce: (body: Body, position: any, force: any) => void;
+    };
+
+    const Render: {
+      create: (options: any) => Render;
+      run: (render: Render) => void;
+      stop: (render: Render) => void;
+      setSize: (render: Render, width: number, height: number) => void;
+    };
+
+    const Runner: {
+      create: () => Runner;
+      run: (runner: Runner, engine: Engine) => void;
+      stop: (runner: Runner) => void;
+    };
   }
-
-  export interface RenderOptions {
-    width?: number;
-    height?: number;
-    wireframes?: boolean;
-    background?: string;
-    [key: string]: any;
-  }
-
-  export interface Render {
-    [key: string]: any;
-  }
-
-  export interface Runner {
-    [key: string]: any;
-  }
-
-  export const Engine: {
-    create: () => Engine;
-    clear: (engine: Engine) => void;
-  };
-
-  export const World: {
-    add: (world: World, bodies: Body | Body[]) => void;
-  };
-
-  export const Bodies: {
-    rectangle: (x: number, y: number, width: number, height: number, options?: any) => Body;
-    circle: (x: number, y: number, radius: number, options?: any) => Body;
-  };
-
-  export const Body: {
-    applyForce: (body: Body, position: any, force: any) => void;
-  };
-
-  export const Render: {
-    create: (options: any) => Render;
-    run: (render: Render) => void;
-    stop: (render: Render) => void;
-    setSize: (render: Render, width: number, height: number) => void;
-  };
-
-  export const Runner: {
-    create: () => Runner;
-    run: (runner: Runner, engine: Engine) => void;
-    stop: (runner: Runner) => void;
-  };
 
   const Matter: {
-    Engine: typeof Engine;
-    World: typeof World;
-    Bodies: typeof Bodies;
-    Body: typeof Body;
-    Render: typeof Render;
-    Runner: typeof Runner;
+    Engine: typeof Matter.Engine;
+    World: typeof Matter.World;
+    Bodies: typeof Matter.Bodies;
+    Body: typeof Matter.Body;
+    Render: typeof Matter.Render;
+    Runner: typeof Matter.Runner;
   };
 
   export default Matter;
