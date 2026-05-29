@@ -1,6 +1,4 @@
-'use client';
-
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Matter from 'matter-js';
 
 interface GravityPoint {
@@ -91,7 +89,7 @@ export function PhysicsDemo() {
 
       // Random color
       const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dfe6e9'];
-      body.label = colors[Math.floor(Math.random() * colors.length)];
+      (body as any).label = colors[Math.floor(Math.random() * colors.length)];
 
       Matter.World.add(world, body);
       bodiesRef.current.push(body);
@@ -150,7 +148,7 @@ export function PhysicsDemo() {
 
     // Handle window resize
     const handleResize = () => {
-      Render.setSize(render, window.innerWidth, window.innerHeight);
+      Matter.Render.setSize(render, window.innerWidth, window.innerHeight);
     };
 
     window.addEventListener('resize', handleResize);
