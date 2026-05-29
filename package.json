@@ -10,9 +10,10 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "matter-js": "^0.20.0",
+    "normalize.css": "^8.0.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "matter-js": "^0.20.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

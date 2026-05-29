@@ -1,0 +1,17 @@
+---
+description: Use Yarn instead of npm for package management
+alwaysApply: true
+---
+
+# Package manager: Yarn
+
+This project uses **Yarn**, not npm.
+
+- Install dependencies: `yarn` or `yarn install`
+- Add a dependency: `yarn add <package>`
+- Add a dev dependency: `yarn add -D <package>`
+- Run scripts: `yarn dev`, `yarn build`, `yarn lint`, etc.
+
+Do **not** use `npm install`, `npm run`, or `npx` unless the user explicitly asks for npm.
+
+Do **not** create or commit `package-lock.json`. Only `yarn.lock` is the lockfile.
